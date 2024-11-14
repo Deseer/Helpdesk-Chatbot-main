@@ -1,5 +1,6 @@
 from argparse import Namespace
 from typing import Annotated
+import random
 from .matcher import *
 from datetime import datetime, timedelta, UTC
 from nonebot.typing import T_State
@@ -514,6 +515,10 @@ async def qq_get_db_ticket(qid: str, matcher: Matcher, session: async_scoped_ses
 async def who_asked(bot: Bot, event: MessageEvent):
     await who_asked_matcher.finish(Message(f"[CQ:at,qq={event.get_user_id()}] 谁问你了"))
 
+@daily_uranai.handle()
+#今日运势
+async def daily_uranai(bot: Bot, event: MessageEvent):
+    await daily_uranai.finish(Message(f"[CQ:at,qq={event.get_user_id()}] 今日修机运势：{random.randint(0, 100)}"))
 
 # 处理好友添加请求
 async def _friend_request(bot: Bot, event: Event, state: T_State) -> bool:

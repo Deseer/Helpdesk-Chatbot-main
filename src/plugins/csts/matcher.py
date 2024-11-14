@@ -73,3 +73,6 @@ op_engineer_matcher = on_shell_command("engineers", parser=engineer_parser, rule
                                        permission=SUPERUSER, priority=10, block=True)
 who_asked_matcher = on_keyword(
     {"我恨你", "I hate you"}, rule=is_engineer, priority=11)
+
+daily_uranai = on_keyword(
+    {"今日运势"}, rule=is_engineer, priority=12)
